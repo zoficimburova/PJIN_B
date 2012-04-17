@@ -1,0 +1,915 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>pridej_zaznam</class>
+ <widget class="QMainWindow" name="pridej_zaznam">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>855</width>
+    <height>384</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>855</width>
+    <height>384</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout_3">
+    <item row="1" column="1">
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="0" column="0" colspan="2">
+       <widget class="QLineEdit" name="lev_nazev"/>
+      </item>
+      <item row="1" column="0">
+       <widget class="QComboBox" name="cbv_zanik">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <item>
+         <property name="text">
+          <string>- - - - - - - - - -</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>VVP Boletice</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>VVP Dobrá Voda</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>VVP Hradiště</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>VVP Jince</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>VVP Libavá</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>VVP Mladá</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>VVP Prameny</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>VVP Ralsko</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Těžba uhlí - Chomutov</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Těžba uhlí - Most</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Těžba uhlí - Sokolov</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Těžba uhlí - Ústí n.L.</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Těžba uranu</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Těžba ostatních surovin</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Složiště popílku</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>JE Dukovany</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>JE Temelín</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Hraniční pásmo</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Vysídleno po roce 1945</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Radovesická výsypka</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Nádrž Přísečnice</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Nádrž Křimov</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Nádrž Nechranice</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Nádrž Újezd</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Nádrž Fláje</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Nádrž Hracholusky</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Nádrž Jesenice</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Nádrž Lipno</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Nádrž Hněvkovice</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Nádrž Kamík</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Nádrž Kořensko</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Nádrž Lučina</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Nádrž Orlík</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Nádrž Rozkoš</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Nádrž Slapy</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Nádrž Žlutice</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Nádrž Vír</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Nádrž Želivka</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Nádrž Vranov</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Nádrž Nové Mlýny</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Živelná pohroma</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Zničeno nacistickým Německem</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Nový</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="lev_zpusob">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="maxLength">
+         <number>34767</number>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QComboBox" name="cbv_okres">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <item>
+         <property name="text">
+          <string>- - - - - - - - - - </string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Benešov</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Beroun</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Blansko</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Břeclav</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Brno - město</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Brno - venkov</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Bruntál</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Česká Lípa</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>České Budějovice</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Český Krumlov</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Cheb</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Chomutov</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Chrudim</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Děčín</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Domažlice</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Frýdek - Místek</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Havlíčkův Brod</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Hlavní město Praha</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Hodonín</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Hradec Králové</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Jablonec nad Nisou</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Jeseník</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Jičín</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Jihlava</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Jindřichův Hradec</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Karlovy Vary</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Karviná</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Kladno</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Klatovy</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Kolín</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Kroměříž</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Kutná Hora</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Liberec</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Litoměřice</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Louny</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Mělník</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Mladá Boleslav</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Most</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Náchod</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Nový Jičín</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Nymburk</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Olomouc</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Opava</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Ostrava - město</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Pardubice</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Pelhřimov</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Písek</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Plzeň - jih</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Plzeň - město</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Plzeň - sever</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Prachatice</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Praha - východ</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Praha - západ</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Přerov</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Příbram</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Prostějov</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Rakovník</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Rokycany</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Rychnov nad Kněžnou</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Sokolov</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Strakonice</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Šumperk</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Svitavy</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Tábor</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Tachov</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Teplice</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Třebíč</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Trutnov</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Uherské Hradiště</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Ústí nad Labem</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Ústí nad Orlicí</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Vsetín</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Vyškov</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Žďár nad Sázavou</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Zlín</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Znojmo</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Nespecifikováno</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QComboBox" name="cbv_obdobi">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <item>
+         <property name="text">
+          <string>- - - - - - - - - - </string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>před 1945</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>1945 - 1950</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>1950 - 1960</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>1960 - 1970</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>1970 - 1980</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>1980 - 1990</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>1990 - 2000</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>po 2000</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>postupně po 1945</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>nespecifikováno</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Nový</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QLineEdit" name="lev_obdobi">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QComboBox" name="cbv_stav">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <item>
+         <property name="text">
+          <string>- - - - - - - - - -</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Zcela zničena</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Částečně zničena</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Ohrožena</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Nespecifikováno</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QLineEdit" name="lev_sirka">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="0">
+       <widget class="QLineEdit" name="lev_delka">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="0" column="2">
+     <widget class="QLabel" name="label_7">
+      <property name="text">
+       <string>Text:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="2" rowspan="2">
+     <widget class="QPlainTextEdit" name="pte_popis"/>
+    </item>
+    <item row="1" column="0" rowspan="2">
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_1">
+        <property name="text">
+         <string>Název :</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_3">
+        <property name="text">
+         <string>Způsob zániku:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_5">
+        <property name="text">
+         <string>Okres:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="label_6">
+        <property name="text">
+         <string>Období zániku:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="label_8">
+        <property name="text">
+         <string>Stav</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QLabel" name="label_2">
+        <property name="text">
+         <string>Zeměpisná šířka:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="0">
+       <widget class="QLabel" name="label_4">
+        <property name="text">
+         <string>Zeměpisná délka:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="0">
+       <widget class="QPushButton" name="pbv_vlozit">
+        <property name="text">
+         <string>Vlož</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+   <zorder>label_7</zorder>
+   <zorder>pte_popis</zorder>
+   <zorder></zorder>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>855</width>
+     <height>27</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

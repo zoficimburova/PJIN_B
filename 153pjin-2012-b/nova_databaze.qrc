@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/sql">
+        <file>nova_databaze.sql</file>
+    </qresource>
+</RCC>
