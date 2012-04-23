@@ -10,12 +10,10 @@ class export_databaze
 
 public:
     export_databaze();
-    bool exec();
-    QStringList sqlList() const;
+    QString exec();
 
 private:
-    QStringList list;
-    static QString strn(QSqlQuery& query, int ord);
+    QString generate_insert(QString table_name,QSqlDatabase db);
 
 
 };

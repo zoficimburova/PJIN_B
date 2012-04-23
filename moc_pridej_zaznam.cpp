@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'pridej_zaznam.h'
 **
-** Created: Tue Apr 17 13:00:54 2012
+** Created: Mon Apr 23 22:50:25 2012
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.7.4)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_pridej_zaznam[] = {
        5,       // revision
        0,       // classname
        0,    0, // classinfo
-       2,   14, // methods
+       3,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -32,14 +32,15 @@ static const uint qt_meta_data_pridej_zaznam[] = {
 
  // slots: signature, parameters, type, tag, flags
       15,   14,   14,   14, 0x08,
-      30,   14,   14,   14, 0x08,
+      29,   14,   14,   14, 0x08,
+      53,   14,   14,   14, 0x08,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_pridej_zaznam[] = {
-    "pridej_zaznam\0\0nacti_zaznam()\0"
-    "on_pbv_vlozit_clicked()\0"
+    "pridej_zaznam\0\0cb_listener()\0"
+    "on_pbv_vlozit_clicked()\0aktualizuj_cb()\0"
 };
 
 const QMetaObject pridej_zaznam::staticMetaObject = {
@@ -71,11 +72,12 @@ int pridej_zaznam::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
-        case 0: nacti_zaznam(); break;
+        case 0: cb_listener(); break;
         case 1: on_pbv_vlozit_clicked(); break;
+        case 2: aktualizuj_cb(); break;
         default: ;
         }
-        _id -= 2;
+        _id -= 3;
     }
     return _id;
 }

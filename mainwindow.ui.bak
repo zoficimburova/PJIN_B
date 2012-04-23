@@ -6,15 +6,37 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1078</width>
-    <height>831</height>
+    <width>900</width>
+    <height>470</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout">
+    <item row="1" column="0" colspan="4">
+     <widget class="QTableView" name="tableView_2">
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>0</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>57</height>
+       </size>
+      </property>
+     </widget>
+    </item>
     <item row="2" column="0">
      <widget class="QLabel" name="label">
       <property name="text">
@@ -93,6 +115,12 @@
     </item>
     <item row="0" column="0" colspan="4">
      <widget class="QSplitter" name="splitter">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="MinimumExpanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
       </property>
@@ -101,7 +129,7 @@
         <bool>true</bool>
        </property>
        <property name="sizePolicy">
-        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
@@ -113,55 +141,23 @@
         </size>
        </property>
       </widget>
-      <widget class="QTabWidget" name="tabWidget">
+      <widget class="QTextEdit" name="textEdit">
        <property name="enabled">
-        <bool>true</bool>
+        <bool>false</bool>
        </property>
-       <property name="currentIndex">
-        <number>0</number>
-       </property>
-       <widget class="QTextEdit" name="textEdit">
-        <property name="enabled">
-         <bool>false</bool>
-        </property>
-        <property name="readOnly">
-         <bool>true</bool>
-        </property>
-        <attribute name="title">
-         <string>Informace</string>
-        </attribute>
-       </widget>
-       <widget class="QWebView" name="map">
-        <property name="enabled">
-         <bool>false</bool>
-        </property>
-        <property name="url">
-         <url>
-          <string>about:blank</string>
-         </url>
-        </property>
-        <attribute name="title">
-         <string>Mapa</string>
-        </attribute>
-       </widget>
-       <zorder>tableView_2</zorder>
       </widget>
-     </widget>
-    </item>
-    <item row="1" column="0" colspan="4">
-     <widget class="QTableView" name="tableView_2">
-      <property name="minimumSize">
-       <size>
-        <width>0</width>
-        <height>0</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>16777215</width>
-        <height>57</height>
-       </size>
-      </property>
+      <widget class="QTabWidget" name="tabWidget">
+       <widget class="QWidget" name="tab_3">
+        <attribute name="title">
+         <string>Tab 1</string>
+        </attribute>
+       </widget>
+       <widget class="QWidget" name="tab_4">
+        <attribute name="title">
+         <string>Tab 2</string>
+        </attribute>
+       </widget>
+      </widget>
      </widget>
     </item>
    </layout>
@@ -171,7 +167,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1078</width>
+     <width>900</width>
      <height>25</height>
     </rect>
    </property>
@@ -202,12 +198,6 @@
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <widget class="QToolBar" name="toolBar">
-   <property name="sizePolicy">
-    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-     <horstretch>0</horstretch>
-     <verstretch>0</verstretch>
-    </sizepolicy>
-   </property>
    <property name="windowTitle">
     <string>toolBar</string>
    </property>
@@ -252,13 +242,6 @@
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <customwidgets>
-  <customwidget>
-   <class>QWebView</class>
-   <extends>QWidget</extends>
-   <header>QtWebKit/QWebView</header>
-  </customwidget>
- </customwidgets>
  <resources/>
  <connections/>
 </ui>

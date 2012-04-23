@@ -15,7 +15,8 @@
 #include <QSqlRecord>
 #include <QSqlField>
 #include <QModelIndex>
-
+#include <QGraphicsItem>
+#include <QGraphicsWidget>
 
 #include <QDebug>
 
@@ -32,12 +33,9 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->cb_okresy, SIGNAL(currentIndexChanged(QString)), this, SLOT(zobrazit()));
     connect(ui->cb_stav,   SIGNAL(currentIndexChanged(QString)), this, SLOT(zobrazit()));
     connect(ui->cb_zpusob, SIGNAL(currentIndexChanged(QString)), this, SLOT(zobrazit()));
-
-
 }
 
-MainWindow::~MainWindow()
-{
+MainWindow::~MainWindow(){
     delete ui;
 }
 
@@ -47,16 +45,13 @@ bool MainWindow::databaze_existuje(QSqlDatabase db) {
 
 void MainWindow::vytvorit_strukturu_databaze(QSqlDatabase db){
     QFile szz(":/sql/nova_databaze.sql");
-    if (szz.open(QIODevice::ReadOnly))
-    {
+    if (szz.open(QIODevice::ReadOnly)){
         QTextStream data(&szz);
         QString sql;
-        while (!data.atEnd())
-        {
+        while (!data.atEnd()){
             QString line = data.readLine();
             sql += line;
-            if (line.contains(";"))
-            {
+            if (line.contains(";")){
                 QSqlQuery query(db);
                 query.exec(sql);
                 sql = "";
@@ -67,8 +62,11 @@ void MainWindow::vytvorit_strukturu_databaze(QSqlDatabase db){
 
 
 // pripojeni databaze / vytvoreni nove databaze
-void MainWindow::on_action_Pripoj_databazi_triggered()
-{
+void MainWindow::on_action_Pripoj_databazi_triggered(){
+
+    ui->action_Nov->setEnabled(false);
+    ui->action_Export_databaze->setEnabled(false);
+
 
     QFileDialog fileDialog(0,trUtf8("otevreni databaze"));
     fileDialog.setAcceptMode(QFileDialog::AcceptOpen);
@@ -79,15 +77,11 @@ void MainWindow::on_action_Pripoj_databazi_triggered()
 
     if (!fileDialog.exec()) return;
 
-    //QSqlDatabase::removeDatabase("sqlite_db");
-
-    //QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE", "sqlite_db");
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
     QString sqliteName = fileDialog.selectedFiles()[0];
 
     MainWindow::jmeno_dab = sqliteName;
     db.setDatabaseName(jmeno_dab);
-
 
     if (!db.open()){
         cerr << "neni pripojena databaze";
@@ -97,13 +91,11 @@ void MainWindow::on_action_Pripoj_databazi_triggered()
     if (!databaze_existuje(db))
         vytvorit_strukturu_databaze(db);
 
+
     aktualizuj_cb();
 
-
-
-
-
-
+    ui->action_Nov->setEnabled(true);
+    ui->action_Export_databaze->setEnabled(true);
 
     ui->cb_obdobi-> setEnabled(true);
     ui->cb_okresy-> setEnabled(true);
@@ -130,23 +122,17 @@ void MainWindow::on_action_Pripoj_databazi_triggered()
 
     connect(ui->tableView->selectionModel(),
               SIGNAL(currentChanged(QModelIndex,QModelIndex)),
-              this, SLOT(rowChanged(QModelIndex)) );
-
-
+              this, SLOT(rowChanged(QModelIndex)));
 
     vrati_jmeno();
     qDebug() << vrati_jmeno();
 }
 
-// zavreni okna
-void MainWindow::on_action_Konec_triggered()
-{
+void MainWindow::on_action_Konec_triggered(){
     close();
 }
 
-
-void MainWindow::zobrazit()
-{
+void MainWindow::zobrazit(){
     QSqlDatabase dbz = QSqlDatabase::database();
     dbz.setDatabaseName(jmeno_dab);
 
@@ -154,7 +140,6 @@ void MainWindow::zobrazit()
                    SIGNAL(currentChanged(QModelIndex,QModelIndex)),
                    this, SLOT(rowChanged(QModelIndex))
                    );
-
 
     QString obdobi  = ui->cb_obdobi->currentText();
     QString okresy  = ui->cb_okresy->currentText();
@@ -173,35 +158,28 @@ void MainWindow::zobrazit()
                         "join conditions on conditions.id = objects.condition_id "
                         "join categories on categories.id = objects.category_id "
                         "join regions on regions.id = objects.region_id ";
-                        //"join images on objects.id = images.object_id "
-                        //"join stories on objects.id = stories.object_id "
-
 
     if (obindex != 0) sOB = " WHERE times.name = '" + obdobi + "'";
 
     if (okindex != 0 && obindex == 0)
-    {   sOK = " WHERE regions.name = '" + okresy + "'";    }
+        sOK = " WHERE regions.name = '" + okresy + "'";
     else
-    {
         if (okindex == 0) sOK.clear();
         else sOK = " AND regions.name = '" + okresy + "'";
-    }
+
 
     if (zpindex != 0 && obindex == 0 && okindex == 0)
-    {   sZP = " WHERE objects.reason = '" + zpusob + "'";  }
-    else
-    {
+       sZP = " WHERE objects.reason = '" + zpusob + "'";
+    else    
         if (zpindex == 0) sZP.clear();
         else sZP = " AND objects.reason = '" + zpusob + "'";
-    }
+
 
     if (stindex != 0 && obindex == 0 && okindex == 0 && zpindex == 0 )
-    {   sST = " WHERE conditions.name = '" + stav + "'";   }
-    else
-    {
+       sST = " WHERE conditions.name = '" + stav + "'";
+    else    
         if (stindex == 0) sST.clear();
         else sST = " AND conditions.name = '" + stav + "'";
-    }
 
     select += sOB + sOK + sZP + sST;
 
@@ -216,35 +194,24 @@ void MainWindow::zobrazit()
 
     QString vysledek = "";
 
-       while (query.next())
-       {
+       while (query.next()){
            int i = 0;
            while (query.value(i).isValid())
-           {
-               vysledek += query.value(i).toString() + "\t";
-               i++;
-           }
+               vysledek += query.value(i++).toString() + "\t";
+
            vysledek += "\n";
        }
-
-
-
-
-
 }
 
-
-
-void MainWindow::on_action_Nov_triggered()
-{
-    pridej_zaznam* z = new pridej_zaznam(this);
+void MainWindow::on_action_Nov_triggered(){
+    pridej_zaznam* z = new pridej_zaznam(this, jmeno_dab);
+    z->set_jmeno(jmeno_dab);
     z->show();
     z->setWindowTitle("Novy zaznam");
 
 }
 
-void MainWindow::on_action_Export_databaze_triggered()
-{
+void MainWindow::on_action_Export_databaze_triggered(){
     QFileDialog fileDialog(0,trUtf8("Export databaze"));
     fileDialog.setAcceptMode(QFileDialog::AcceptSave);
     fileDialog.setDefaultSuffix("sql");
@@ -253,37 +220,20 @@ void MainWindow::on_action_Export_databaze_triggered()
 
     if (!fileDialog.exec()) return;
 
-    export_databaze export_databaze;
-    if (!export_databaze.exec()) return;
-
-    QStringList sqlList = export_databaze.sqlList();
-
     QFile sql(fileDialog.selectedFiles()[0]);
     sql.open(QIODevice::WriteOnly);
 
     QTextStream data(&sql);
 
     data << "BEGIN;\n\n";
-    for (QStringList::const_iterator i=sqlList.begin(), e=sqlList.end(); i!=e; ++i)
-    {
-        data << *i;
-    }
+    data << export_databaze().exec();
     data << "COMMIT;\n";
 }
 
-
-// podrobne info v pravem okne (podrobny text je dostupny jen u nekterych obci)
  void MainWindow::rowChanged(QModelIndex index)
 {
-
-
-
-
-     QSqlDatabase dbz = QSqlDatabase::database();
-     dbz.setDatabaseName(jmeno_dab);
-
-
-
+    QSqlDatabase dbz = QSqlDatabase::database();
+    dbz.setDatabaseName(jmeno_dab);
     index_row = index.row();
     QSqlRecord r = model.record(index_row);
     QString bunka;
@@ -301,11 +251,11 @@ void MainWindow::on_action_Export_databaze_triggered()
 
     bunka =  r.field("name").value().toString();
 
+    QSqlQuery id_query("Select id from objects where name = '"+bunka+"';",dbz);
+    id_query.next();
+    int id = id_query.value(0).toInt();
 
-
-
-
-  QString joiny2 =    "select objects.name, regions.name, objects.gpslat, objects.gpslon, times.name, objects.reason, conditions.name from objects "
+    QString joiny2 =    "select objects.name, regions.name, objects.gpslat, objects.gpslon, times.name, objects.reason, conditions.name from objects "
                       "join times on objects.time_id = times.id "
                       "join conditions on conditions.id = objects.condition_id "
                       "join categories on categories.id = objects.category_id "
@@ -313,14 +263,13 @@ void MainWindow::on_action_Export_databaze_triggered()
 
     where2 = "where objects.name = ";
 
+    select_text2 = joiny2 + where2 + "'"+ bunka + "'";
 
-  select_text2 = joiny2 + where2 + "'"+ bunka + "'";
-
-  QSqlQuery query2(dbz);
-  query2.exec(select_text2);
+    QSqlQuery query2(dbz);
+    query2.exec(select_text2);
 
 
-  joiny =   "select text from objects "
+    joiny =   "select text from objects "
           "join times on objects.time_id = times.id "
           "join conditions on conditions.id = objects.condition_id "
           "join categories on categories.id = objects.category_id "
@@ -328,11 +277,11 @@ void MainWindow::on_action_Export_databaze_triggered()
           "join stories on objects.id = stories.object_id ";
           //"join images on objects.id = images.object_id "
 
-  where = "where objects.name = ";
+    where = "where objects.name = ";
 
-  select_text = joiny + where + "'"+ bunka + "'";
+    select_text = joiny + where + "'"+ bunka + "'";
 
-  QString vysledek2 = "";
+    QString vysledek2 = "";
 
           while (query2.next())
           {
@@ -344,8 +293,6 @@ void MainWindow::on_action_Export_databaze_triggered()
               }
               vysledek2 += "\n";
           }
-
-
 
           model2.setQuery(select_text2);
           model2.setHeaderData(0,Qt::Horizontal, QObject::tr("obec"));
@@ -368,7 +315,7 @@ void MainWindow::on_action_Export_databaze_triggered()
   QSqlQuery query(dbz);
   query.exec(select_text);
 
- QString vysledek = "";
+  QString vysledek = "";
 
          while (query.next())
          {
@@ -381,6 +328,13 @@ void MainWindow::on_action_Export_databaze_triggered()
              vysledek += "\n";
          }
 
+         QSqlQuery location("select gpslat, gpslon from objects where name = '"+bunka+"';",dbz);
+         if(location.next())
+            nastav_mapu(location.value(0).toFloat(),location.value(1).toFloat());
+         else
+             ui->map->setDisabled(true);
+
+         nacti_nahledy(id,dbz);
 
 if (vysledek == "")
     vysledek = "Tato obec nema zadny text";
@@ -389,95 +343,36 @@ ui->textEdit->setText(vysledek);
 
 }
 
-
-
-void MainWindow::aktualizuj_cb()
- {
-
+void MainWindow::aktualizuj_cb() {
     QSqlDatabase db = QSqlDatabase::database();
     db.setDatabaseName(jmeno_dab);
-
-    QSqlQuery qsql_okres(db), qsql_obdobi(db), qsql_stav(db), qsql_zpusob(db);
-
-    QString qsqls_okres, qsqls_obdobi, qsqls_stav, qsqls_zpusob;
-
-    qsqls_okres = "select distinct name from regions";
-    qsqls_obdobi = "select distinct name from times";
-    qsqls_stav = "select distinct name from conditions";
-    qsqls_zpusob = "select distinct reason from objects";
-
-    qsql_okres.exec(qsqls_okres);
-    qsql_obdobi.exec(qsqls_obdobi);
-    qsql_stav.exec(qsqls_stav);
-    qsql_zpusob.exec(qsqls_zpusob);
-
-
-       while (qsql_okres.next())
-       {
-           int i = 0;
-
-
-           while (qsql_okres.value(i).isValid())
-           {
-               qsl_okres << qsql_okres.value(i).toString();
-               i++;
-           }
-
-       }
-ui->cb_okresy->addItems(qsl_okres);
-
-       while (qsql_stav.next())
-       {
-           int i = 0;
-
-
-           while (qsql_stav.value(i).isValid())
-           {
-               qsl_stav << qsql_stav.value(i).toString();
-               i++;
-           }
-
-       }
-
-    qDebug() << qsl_stav;
-
-
-
-    ui->cb_stav->addItems(qsl_stav);
-
-    while (qsql_obdobi.next())
-    {
-        int i = 0;
-
-
-        while (qsql_obdobi.value(i).isValid())
-        {
-            qsl_obdobi << qsql_obdobi.value(i).toString();
-            i++;
-        }
-
-    }
-ui->cb_obdobi->addItems(qsl_obdobi);
-
-
-while (qsql_zpusob.next())
-{
-    int i = 0;
-
-
-    while (qsql_zpusob.value(i).isValid())
-    {
-        qsl_zpusob << qsql_zpusob.value(i).toString();
-        i++;
-    }
-
+    napln_cb(QSqlQuery("select name, id from regions", db),           *ui->cb_okresy);
+    napln_cb(QSqlQuery("select name, id from conditions", db),        *ui->cb_stav);
+    napln_cb(QSqlQuery("select name, id from times", db),             *ui->cb_obdobi);
+    napln_cb(QSqlQuery("select distinct reason, 0 from objects", db), *ui->cb_zpusob);
 }
-ui->cb_zpusob->addItems(qsl_zpusob);
 
- }
+void MainWindow::napln_cb(QSqlQuery query, QComboBox &comboBox){
+    while(query.next())
+            comboBox.addItem(query.value(0).toString(),query.value(1));
+}
 
-QString MainWindow::vrati_jmeno()
-{
+
+void MainWindow::nastav_mapu(float lat, float lon){
+    QString adresa = QString("http://maps.google.com/maps?f=q&hl=cs&t=h&z=15&ll=%1,%2&output=embed").arg(lat).arg(lon);
+    ui->map->setUrl(adresa);
+    ui->map->setEnabled(true);
+}
+
+
+void MainWindow::nacti_nahledy(int object_id, QSqlDatabase db){
+    QSqlQuery images(QString("Select id from images where object_id = '%1';").arg(object_id),db);
+    while(images.next()){
+        qDebug() << "snazim se nacist obrazek" << images.value(0).toString() << ".jpg a nevim proc to nefunguje";
+    }
+}
+
+QString MainWindow::vrati_jmeno(){
                return jmeno_dab;
 }
 

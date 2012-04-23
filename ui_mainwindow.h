@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created: Tue Apr 17 13:00:46 2012
+** Created: Mon Apr 23 23:30:41 2012
 **      by: Qt User Interface Compiler version 4.7.4
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -23,10 +23,12 @@
 #include <QtGui/QMenuBar>
 #include <QtGui/QSplitter>
 #include <QtGui/QStatusBar>
+#include <QtGui/QTabWidget>
 #include <QtGui/QTableView>
 #include <QtGui/QTextEdit>
 #include <QtGui/QToolBar>
 #include <QtGui/QWidget>
+#include <QtWebKit/QWebView>
 
 QT_BEGIN_NAMESPACE
 
@@ -39,10 +41,6 @@ public:
     QAction *action_Export_databaze;
     QWidget *centralWidget;
     QGridLayout *gridLayout;
-    QSplitter *splitter;
-    QTableView *tableView;
-    QTextEdit *textEdit;
-    QTableView *tableView_2;
     QLabel *label;
     QLabel *label_2;
     QLabel *label_3;
@@ -51,6 +49,12 @@ public:
     QComboBox *cb_okresy;
     QComboBox *cb_zpusob;
     QComboBox *cb_stav;
+    QSplitter *splitter;
+    QTableView *tableView;
+    QTabWidget *tabWidget;
+    QTextEdit *textEdit;
+    QWebView *map;
+    QTableView *tableView_2;
     QMenuBar *menuBar;
     QMenu *menu_Soubor;
     QMenu *menu_Vlo_it;
@@ -62,58 +66,23 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(900, 470);
-        QSizePolicy sizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::MinimumExpanding);
-        sizePolicy.setHorizontalStretch(0);
-        sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(MainWindow->sizePolicy().hasHeightForWidth());
-        MainWindow->setSizePolicy(sizePolicy);
+        MainWindow->resize(1078, 831);
         action_Konec = new QAction(MainWindow);
         action_Konec->setObjectName(QString::fromUtf8("action_Konec"));
         action_Nov = new QAction(MainWindow);
         action_Nov->setObjectName(QString::fromUtf8("action_Nov"));
+        action_Nov->setEnabled(false);
         action_Pripoj_databazi = new QAction(MainWindow);
         action_Pripoj_databazi->setObjectName(QString::fromUtf8("action_Pripoj_databazi"));
         action_Export_databaze = new QAction(MainWindow);
         action_Export_databaze->setObjectName(QString::fromUtf8("action_Export_databaze"));
+        action_Export_databaze->setEnabled(false);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
         gridLayout = new QGridLayout(centralWidget);
         gridLayout->setSpacing(6);
         gridLayout->setContentsMargins(11, 11, 11, 11);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
-        splitter = new QSplitter(centralWidget);
-        splitter->setObjectName(QString::fromUtf8("splitter"));
-        QSizePolicy sizePolicy1(QSizePolicy::Expanding, QSizePolicy::MinimumExpanding);
-        sizePolicy1.setHorizontalStretch(0);
-        sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(splitter->sizePolicy().hasHeightForWidth());
-        splitter->setSizePolicy(sizePolicy1);
-        splitter->setOrientation(Qt::Horizontal);
-        tableView = new QTableView(splitter);
-        tableView->setObjectName(QString::fromUtf8("tableView"));
-        tableView->setEnabled(true);
-        QSizePolicy sizePolicy2(QSizePolicy::Maximum, QSizePolicy::Maximum);
-        sizePolicy2.setHorizontalStretch(0);
-        sizePolicy2.setVerticalStretch(0);
-        sizePolicy2.setHeightForWidth(tableView->sizePolicy().hasHeightForWidth());
-        tableView->setSizePolicy(sizePolicy2);
-        tableView->setMinimumSize(QSize(0, 0));
-        splitter->addWidget(tableView);
-        textEdit = new QTextEdit(splitter);
-        textEdit->setObjectName(QString::fromUtf8("textEdit"));
-        textEdit->setEnabled(false);
-        splitter->addWidget(textEdit);
-
-        gridLayout->addWidget(splitter, 0, 0, 1, 4);
-
-        tableView_2 = new QTableView(centralWidget);
-        tableView_2->setObjectName(QString::fromUtf8("tableView_2"));
-        tableView_2->setMinimumSize(QSize(0, 0));
-        tableView_2->setMaximumSize(QSize(16777215, 57));
-
-        gridLayout->addWidget(tableView_2, 1, 0, 1, 4);
-
         label = new QLabel(centralWidget);
         label->setObjectName(QString::fromUtf8("label"));
 
@@ -158,10 +127,47 @@ public:
 
         gridLayout->addWidget(cb_stav, 3, 3, 1, 1);
 
+        splitter = new QSplitter(centralWidget);
+        splitter->setObjectName(QString::fromUtf8("splitter"));
+        splitter->setOrientation(Qt::Horizontal);
+        tableView = new QTableView(splitter);
+        tableView->setObjectName(QString::fromUtf8("tableView"));
+        tableView->setEnabled(true);
+        QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(tableView->sizePolicy().hasHeightForWidth());
+        tableView->setSizePolicy(sizePolicy);
+        tableView->setMinimumSize(QSize(0, 0));
+        splitter->addWidget(tableView);
+        tabWidget = new QTabWidget(splitter);
+        tabWidget->setObjectName(QString::fromUtf8("tabWidget"));
+        tabWidget->setEnabled(true);
+        textEdit = new QTextEdit();
+        textEdit->setObjectName(QString::fromUtf8("textEdit"));
+        textEdit->setEnabled(false);
+        textEdit->setReadOnly(true);
+        tabWidget->addTab(textEdit, QString());
+        map = new QWebView();
+        map->setObjectName(QString::fromUtf8("map"));
+        map->setEnabled(false);
+        map->setUrl(QUrl("about:blank"));
+        tabWidget->addTab(map, QString());
+        splitter->addWidget(tabWidget);
+
+        gridLayout->addWidget(splitter, 0, 0, 1, 4);
+
+        tableView_2 = new QTableView(centralWidget);
+        tableView_2->setObjectName(QString::fromUtf8("tableView_2"));
+        tableView_2->setMinimumSize(QSize(0, 0));
+        tableView_2->setMaximumSize(QSize(16777215, 57));
+
+        gridLayout->addWidget(tableView_2, 1, 0, 1, 4);
+
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 900, 27));
+        menuBar->setGeometry(QRect(0, 0, 1078, 25));
         menu_Soubor = new QMenu(menuBar);
         menu_Soubor->setObjectName(QString::fromUtf8("menu_Soubor"));
         menu_Vlo_it = new QMenu(menuBar);
@@ -175,6 +181,11 @@ public:
         MainWindow->setStatusBar(statusBar);
         toolBar = new QToolBar(MainWindow);
         toolBar->setObjectName(QString::fromUtf8("toolBar"));
+        QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(toolBar->sizePolicy().hasHeightForWidth());
+        toolBar->setSizePolicy(sizePolicy1);
         MainWindow->addToolBar(Qt::TopToolBarArea, toolBar);
 
         menuBar->addAction(menu_Soubor->menuAction());
@@ -185,6 +196,9 @@ public:
         menu_Vlo_it->addAction(action_Nov);
 
         retranslateUi(MainWindow);
+
+        tabWidget->setCurrentIndex(0);
+
 
         QMetaObject::connectSlotsByName(MainWindow);
     } // setupUi
@@ -218,6 +232,8 @@ public:
         cb_stav->insertItems(0, QStringList()
          << QApplication::translate("MainWindow", "- - - - - - - - - -", 0, QApplication::UnicodeUTF8)
         );
+        tabWidget->setTabText(tabWidget->indexOf(textEdit), QApplication::translate("MainWindow", "Informace", 0, QApplication::UnicodeUTF8));
+        tabWidget->setTabText(tabWidget->indexOf(map), QApplication::translate("MainWindow", "Mapa", 0, QApplication::UnicodeUTF8));
         menu_Soubor->setTitle(QApplication::translate("MainWindow", "&Soubor", 0, QApplication::UnicodeUTF8));
         menu_Vlo_it->setTitle(QApplication::translate("MainWindow", "&Vlo\305\276it", 0, QApplication::UnicodeUTF8));
         toolBar->setWindowTitle(QApplication::translate("MainWindow", "toolBar", 0, QApplication::UnicodeUTF8));
